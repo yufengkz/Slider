@@ -1,0 +1,31 @@
+/* CSS Document */
+*{ margin:0; padding:0;}
+body{ font-size:12px; margin:0; line-height: 100%;}
+h1,h2,h3,h4,h5,h6{ margin:0; font-weight:normal; font-size:12px;}
+a{ color:#000; text-decoration:none;}
+a img{ border: none;}
+ol,ul,li{ list-style:none; padding:0; margin:0;}
+p{ margin:0;}
+i,em{ font-style:normal;}
+b,strong{ font-weight:normal;}
+a img{ border:none;}
+img{display: block;}
+
+.fl{float: left;}
+.fr{float: right;}
+
+.clearfix:after{ display: block; content: ""; clear: both;}
+.clearfix{ zoom:1;}
+
+#app{ width: 600px; height: 337px; margin: 20px auto; position: relative; top: 0 ; left: 0; overflow: hidden; border: 1px solid red;}
+#app p{ position: absolute; bottom: 10px; left: 50%; margin-left: -130px; z-index: 1;}
+#app a{ width: 20px; height: 20px; background: #ccc; float: left; margin-left: 30px; text-align: center; line-height: 20px; color: #f1f1f1;}
+#app a.on{ background: #0ee3d3; font-weight: bold;}
+#app ul{ position: absolute; top: 0; left: 0; width: 100%; transition: left 1s;}
+#app ul li{ width: 600px; float: left;}
+#app li img{ width: 100%}
+#app .arrows span{ cursor: pointer; width: 30px; height: 60px; line-height: 60px; font-size: 30px; position: absolute; top: 41%; background: #ccc; color: #fff; text-align: center; z-index: 10}
+.leftBtn{left: 0px;}
+.rightBtn{right: 0px;}
+.show{display: block}
+.hide{display:none}
