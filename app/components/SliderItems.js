@@ -5,9 +5,8 @@ export default class SliderItems extends React.Component{
         super(props)
     }
     render(){
-        let w = 100 / this.props.count + '%'
         return(
-            <li style={{width: w}}>
+            <li>
                 <img src={this.props.item.src} alt={this.props.item.src}/>
             </li>
         )

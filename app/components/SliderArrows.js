@@ -1,5 +1,5 @@
 import React from 'react'
-
+import $ from 'jquery'
 export default class SliderArrows extends React.Component{
     handleLeft(){
         var index = this.props.nowIndex
@@ -8,14 +8,17 @@ export default class SliderArrows extends React.Component{
             index = this.props.count - 1
         }
         this.props.getNowIndex(index)
+        $('#sliders').animate({left:- index * 100 + '%'})
     }
     handleRight(){
         var index = this.props.nowIndex
         index ++
-        if(index > this.props.count - 1){
-            index = 0
+        if(index >= this.props.count + 1){
+            index = 1
+            $('#sliders').css({left: 0})
         }
         this.props.getNowIndex(index)
+        $('#sliders').animate({left:- index * 100 + '%'})
     }
     render(){
         return(

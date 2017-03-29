@@ -3,6 +3,7 @@ import React from 'react'
 import SliderDots from './SliderDots'
 import SliderItems from './SliderItems'
 import SliderArrows from './SliderArrows'
+import $ from 'jquery'
 export default class Slider extends React.Component{
     constructor(props){
         super(props)
@@ -20,10 +21,12 @@ export default class Slider extends React.Component{
             var time = this.props.delay || 1
             this.state.timer = setInterval(() => {
                 index ++
-                if(index > this.props.items.length - 1){
-                    index = 0
+                if(index >= this.props.items.length + 1){
+                    index = 1
+                    $('#sliders').css({left: 0})
                 }
                 this.getNowIndex(index)
+                $('#sliders').animate({left:- index * 100 + '%'})
             }, time * 1000)
         }
     }
@@ -35,6 +38,11 @@ export default class Slider extends React.Component{
     }
     render(){
         let count = this.props.items.length
+        let style = {
+            width: (count + 2) * 100 + '%',
+            //left:  - this.state.nowIndex * 100 + '%',
+            /*transitionDuration: this.props.speed ? this.props.speed : 1.5 + 's'*/}
+
         let itemNodes = this.props.items.map((item, index) => {
             return <SliderItems key={index} count={count} item={item}></SliderItems>
         })
@@ -45,8 +53,11 @@ export default class Slider extends React.Component{
 
                 {this.props.arrows ? <SliderArrows count={count} nowIndex={this.state.nowIndex} getNowIndex={this.getNowIndex.bind(this)}></SliderArrows> : null}
 
-                <ul style={{width: count * 100 + '%', left:  - this.state.nowIndex * 100 + '%', transitionDuration: this.props.speed ? this.props.speed : 1.5 + 's',}}>
+                <ul id="sliders" style={style}>
                     {itemNodes}
+                    <li style={{width: '600px'}}>
+                        <img src={this.props.items[0].src} alt={this.props.items[0].src}/>
+                    </li>
                 </ul>
             </div>
         )
